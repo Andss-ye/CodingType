@@ -3,7 +3,7 @@ import { StatsPanel } from "@/components/typing/StatsPanel";
 import { ActionButtons } from "@/components/typing/ActionButtons";
 import { useTypingGame } from "@/hooks/useTypingGame";
 
-export const Home = () => {
+export default function HomePage () {
   const {
     snippet,
     input,
