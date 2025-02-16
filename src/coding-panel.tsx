@@ -12,12 +12,13 @@ export default function CodingTypePanel() {
   useEffect(() => {
     Prism.highlightAll();
   }, [input]);
-
   useEffect(() => {
-    inputRef.current?.focus();
+    if (inputRef.current) {
+      (inputRef.current as HTMLInputElement).focus();
+    }
   }, []);
 
-  const handleChange = (e: { target: { value: any; }; }) => {
+  const handleChange = (e: { target: { value: string }}) => {
     const newValue = e.target.value;
     const lastChar = newValue[newValue.length - 1];
     
@@ -40,7 +41,7 @@ export default function CodingTypePanel() {
     return snippet.split("").map((char, index) => {
       let className = "text-gray-400";
       if (index === currentIndex) {
-        className += " border-l-2 border-blue-400"; // Cursor delgado
+        className += " border-l-2 border-blue-400";
       }
       if (input[index]) {
         className = input[index] === char ? "text-green-400" : "text-red-400";
@@ -56,7 +57,7 @@ export default function CodingTypePanel() {
   return (
     <div
       className="flex flex-col bg-gray-900 p-6 rounded-xl text-white w-full max-w-2xl"
-      onClick={() => inputRef.current?.focus()}
+      onClick={() => (inputRef.current as unknown as HTMLInputElement)?.focus()}
     >
       {/* Barra de seguimiento */}
       <div className="w-full h-2 bg-gray-700 rounded-md overflow-hidden mb-2">
