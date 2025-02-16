@@ -1,86 +1,57 @@
 import { useState, useEffect, useRef } from "react";
-import "prismjs/themes/prism-tomorrow.css";
-import Prism from "prismjs";
 
-export default function CodingTypePanel() {
-  const snippet = `function calc(x) {\n  if (x > 0) {\n    return x * 2;\n  }\n}`;
+const snippets = [
+  "console.log('Hello, world!');",
+  "function add(a: number, b: number): number { return a + b; }",
+  "const fetchData = async () => { const res = await fetch('/api'); return res.json(); }",
+];
 
+export default function TypingTest() {
+  const [snippet, setSnippet] = useState("");
   const [input, setInput] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    Prism.highlightAll();
-  }, [input]);
+    setSnippet(snippets[Math.floor(Math.random() * snippets.length)]);
+  }, []);
+
   useEffect(() => {
     if (inputRef.current) {
-      (inputRef.current as HTMLInputElement).focus();
+      inputRef.current.focus();
     }
   }, []);
 
-  const handleChange = (e: { target: { value: string }}) => {
-    const newValue = e.target.value;
-    const lastChar = newValue[newValue.length - 1];
-    
-    // Manejo de nueva línea con indentación automática
-    if (lastChar === "\n") {
-      const lines = snippet.split("\n");
-      const typedLines = newValue.split("\n");
-      const currentLine = lines[typedLines.length - 1] || "";
-      const indentMatch = currentLine.match(/^\s*/);
-      const indent = indentMatch ? indentMatch[0] : "";
-      setInput(newValue + indent);
-      setCurrentIndex(newValue.length + indent.length);
-    } else {
-      setInput(newValue);
-      setCurrentIndex(newValue.length);
-    }
-  };
-
-  const renderSnippet = () => {
-    return snippet.split("").map((char, index) => {
-      let className = "text-gray-400";
-      if (index === currentIndex) {
-        className += " border-l-2 border-blue-400";
-      }
-      if (input[index]) {
-        className = input[index] === char ? "text-green-400" : "text-red-400";
-      }
-      return (
-        <span key={index} className={className}>
-          {char}
-        </span>
-      );
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
   };
 
   return (
-    <div
-      className="flex flex-col bg-gray-900 p-6 rounded-xl text-white w-full max-w-2xl"
-      onClick={() => (inputRef.current as unknown as HTMLInputElement)?.focus()}
-    >
-      {/* Barra de seguimiento */}
-      <div className="w-full h-2 bg-gray-700 rounded-md overflow-hidden mb-2">
-        <div
-          className="h-full bg-blue-500 transition-all"
-          style={{ width: `${(currentIndex / snippet.length) * 100}%` }}
-        ></div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-4">
+      <div className="w-full max-w-4xl p-6 bg-gray-800 rounded-lg shadow-md">
+        <pre className="bg-black p-4 rounded-md font-mono text-lg overflow-auto h-60 border border-gray-700 whitespace-pre-wrap">
+          {snippet.split("").map((char, index) => (
+            <span
+              key={index}
+              className={
+                input[index] === undefined
+                  ? "text-gray-400"
+                  : input[index] === char
+                  ? "text-green-400"
+                  : "text-red-400"
+              }
+            >
+              {char}
+            </span>
+          ))}
+        </pre>
+        <input
+          ref={inputRef}
+          value={input}
+          onChange={handleChange}
+          className="w-full p-2 mt-4 bg-gray-700 border border-gray-600 text-white rounded-md focus:outline-none"
+          placeholder="Escribe aquí..."
+        />
       </div>
-
-      {/* Snippet visual */}
-      <pre className="p-4 bg-gray-800 rounded-md font-mono text-lg whitespace-pre-wrap">
-        {renderSnippet()}
-      </pre>
-
-      {/* Input invisible */}
-      <input
-        ref={inputRef}
-        className="absolute opacity-0"
-        type="text"
-        value={input}
-        onChange={handleChange}
-        autoFocus
-      />
     </div>
   );
 }
