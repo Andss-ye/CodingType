@@ -26,8 +26,8 @@ export default function Home() {
       </div>
 
       <div className="max-w-4xl w-full space-y-8 z-10">
-        <h1 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-blue-600 animate-pulse">
-          CodeType Master
+        <h1 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-white animate-pulse">
+          Coding Type
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
