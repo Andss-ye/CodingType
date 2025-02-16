@@ -1,10 +1,10 @@
-import CodingTypePanel from './coding-panel.tsx'
+import HomePage from './pages/Home.tsx'
 
 function App() {
 
   return (
     <>
-      <CodingTypePanel></CodingTypePanel>
+      <HomePage></HomePage>
     </>
   )
 }

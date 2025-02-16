@@ -16,21 +16,6 @@
 npm install prismjs
 ```
 
-## 🔧 Uso
-```tsx
-import CodingTypePanel from "./CodingTypePanel";
-
-function App() {
-  return (
-    <div className="flex justify-center items-center h-screen bg-gray-950">
-      <CodingTypePanel />
-    </div>
-  );
-}
-
-export default App;
-```
-
 ## 🛠️ Tecnologías utilizadas
 - **React**: Para la interfaz interactiva.
 - **Tailwind CSS**: Para el diseño responsivo y estilizado.
