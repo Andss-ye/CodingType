@@ -65,6 +65,9 @@ export default function HomePage () {
           isTyping={isTyping}
         />
       </div>
+      <footer className="mt-8 text-center text-xl font-bold text-black-100">
+        © Andrew - CodingType - 2025
+      </footer>
     </main>
   );
-}; 
+};
