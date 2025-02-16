@@ -1,4 +1,3 @@
-import CodingTypePanel from './coding-panel.tsx'
 import InterfaceView from './interfaceView.tsx'
 
 function App() {
