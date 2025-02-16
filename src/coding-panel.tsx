@@ -18,32 +18,23 @@ export default function CodingTypePanel() {
     }
   }, []);
 
-<<<<<<< HEAD
   const handleChange = (e: { target: { value: string }}) => {
     const newValue = e.target.value;
     const lastChar = newValue[newValue.length - 1];
     
     // Manejo de nueva línea con indentación automática
     if (lastChar === "\n") {
-=======
-  const handleKeyDown = (e: { target: { value: any; }; }) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
->>>>>>> 2302a86529249f1e1dfe6d196261f39d802b4c44
       const lines = snippet.split("\n");
-      const typedLines = input.split("\n");
+      const typedLines = newValue.split("\n");
       const currentLine = lines[typedLines.length - 1] || "";
       const indentMatch = currentLine.match(/^\s*/);
       const indent = indentMatch ? indentMatch[0] : "";
-
-      setInput(input + "\n" + indent);
-      setCurrentIndex(input.length + 1 + indent.length);
+      setInput(newValue + indent);
+      setCurrentIndex(newValue.length + indent.length);
+    } else {
+      setInput(newValue);
+      setCurrentIndex(newValue.length);
     }
-  };
-
-  const handleChange = (e: { target: { value: any; }; }) => {
-    setInput(e.target.value);
-    setCurrentIndex(e.target.value.length);
   };
 
   const renderSnippet = () => {
@@ -87,8 +78,7 @@ export default function CodingTypePanel() {
         className="absolute opacity-0"
         type="text"
         value={input}
-        onChange={(e) => handleChange(e as React.ChangeEvent<HTMLInputElement>)}
-        onKeyDown={(e) => handleKeyDown(e as React.KeyboardEvent<HTMLInputElement>)}
+        onChange={handleChange}
         autoFocus
       />
     </div>
