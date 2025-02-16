@@ -14,5 +14,5 @@ export const CODE_SNIPPETS = [
   "const getLast = arr => arr[arr.length - 1];",
   "const fetchData = async url => (await fetch(url)).json();",
   "const toHex = num => num.toString(16);",
-  "const range = (n, start = 0) => [...Array(n).keys()].map(i => i + start);"
+  "const range = (n, start = 0) => [...Array(n).keys()].map(i => i + start);",
 ]; 
