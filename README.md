@@ -1,7 +1,8 @@
-# Coding Type Panel
+# Coding Type 
+** Hecho por AndrewDev (Andss-ye) **
 
 ## 🚀 Descripción
-**Coding Type Panel** es un componente interactivo de React que permite a los usuarios practicar la escritura de código con retroalimentación visual en tiempo real. Cada letra escrita se compara con un fragmento de código predefinido y se marca en verde si es correcta o en rojo si es incorrecta. Además, incluye una barra de seguimiento y una lógica de indentación automática.
+**Coding Type** es un componente interactivo de React que permite a los usuarios practicar la escritura de código con retroalimentación visual en tiempo real. Cada letra escrita se compara con un fragmento de código predefinido y se marca en verde si es correcta o en rojo si es incorrecta. Además, incluye una barra de seguimiento y una lógica de indentación automática.
 
 ## 🖥️ Características
 - 🎨 **Resaltado de sintaxis** con `Prism.js`.
