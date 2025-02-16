@@ -39,7 +39,7 @@ export default function HomePage () {
         </div>
       </div>
 
-      <div className="max-w-6xl w-full space-y-8 z-10">
+      <div className="max-w-6xl w-full space-y-20 z-10">
         <h1 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-white animate-pulse">
           Coding Type
         </h1>
