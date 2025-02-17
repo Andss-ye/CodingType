@@ -65,8 +65,17 @@ export default function HomePage () {
           isTyping={isTyping}
         />
       </div>
-      <footer className="mt-8 text-center text-xl font-bold text-black-100">
-        © Andrew - CodingType - 2025
+      <footer className="mt-8 text-center text-xl font-bold text-white relative">
+      ©{" "}
+        <a
+          href="https://github.com/Andss-ye"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white hover:underline relative z-10"
+        >
+          Andrew
+        </a>{" "}
+        - CodingType - 2025
       </footer>
     </main>
   );
